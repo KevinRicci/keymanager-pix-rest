@@ -1,6 +1,7 @@
-package br.com.zupacademy.chavePix
+package br.com.zupacademy.chavePix.cadastra
 
-import br.com.zupacademy.chavePix.cadastra.CadastraChavePixRequest
+import br.com.zupacademy.chavePix.TipoChave
+import br.com.zupacademy.chavePix.TipoConta
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test

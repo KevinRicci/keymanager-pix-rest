@@ -1,8 +1,9 @@
-package br.com.zupacademy.chavePix
+package br.com.zupacademy.chavePix.cadastra
 
 import br.com.zupacademy.ChavePixResponse
 import br.com.zupacademy.KeyManagerPixServiceCadastraGrpc
-import br.com.zupacademy.chavePix.cadastra.CadastraChavePixRequest
+import br.com.zupacademy.chavePix.TipoChave
+import br.com.zupacademy.chavePix.TipoConta
 import br.com.zupacademy.client.ClientFactoryGrpc
 import io.micronaut.context.annotation.Factory
 import io.micronaut.context.annotation.Replaces
