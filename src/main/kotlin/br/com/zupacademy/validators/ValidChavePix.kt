@@ -1,6 +1,6 @@
 package br.com.zupacademy.validators
 
-import br.com.zupacademy.chavePix.CadastraChavePixRequest
+import br.com.zupacademy.chavePix.cadastra.CadastraChavePixRequest
 import io.micronaut.core.annotation.AnnotationValue
 import io.micronaut.validation.validator.constraints.ConstraintValidator
 import javax.validation.Constraint

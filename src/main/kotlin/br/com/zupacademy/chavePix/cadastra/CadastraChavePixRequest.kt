@@ -1,10 +1,9 @@
-package br.com.zupacademy.chavePix
+package br.com.zupacademy.chavePix.cadastra
 
+import br.com.zupacademy.chavePix.TipoChave
+import br.com.zupacademy.chavePix.TipoConta
 import br.com.zupacademy.validators.ValidChavePix
-import br.com.zupacademy.validators.ValidUUID
 import io.micronaut.core.annotation.Introspected
-import javax.validation.constraints.Max
-import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
 @ValidChavePix

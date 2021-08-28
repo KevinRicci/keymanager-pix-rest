@@ -2,11 +2,11 @@ package br.com.zupacademy.chavePix
 
 import br.com.zupacademy.ChavePixResponse
 import br.com.zupacademy.KeyManagerPixServiceCadastraGrpc
+import br.com.zupacademy.chavePix.cadastra.CadastraChavePixRequest
 import br.com.zupacademy.client.ClientFactoryGrpc
 import io.micronaut.context.annotation.Factory
 import io.micronaut.context.annotation.Replaces
 import io.micronaut.http.HttpRequest
-import io.micronaut.http.HttpResponse
 import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client
@@ -40,10 +40,11 @@ internal class CadastraChavePixControllerTest(
 
         //ação
         val request = HttpRequest.POST<CadastraChavePixRequest>("/api/v1/clientes/$uuidCliente/chaves", CadastraChavePixRequest(
-            br.com.zupacademy.chavePix.TipoChave.EMAIL,
+            TipoChave.EMAIL,
             "teste@test.com",
-            br.com.zupacademy.chavePix.TipoConta.CONTA_POUPANCA
-        ))
+            TipoConta.CONTA_POUPANCA
+        )
+        )
         val response = httpClient.toBlocking().exchange(request, String::class.java)
 
         //validação

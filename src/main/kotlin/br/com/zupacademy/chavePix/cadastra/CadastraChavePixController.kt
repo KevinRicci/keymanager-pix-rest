@@ -1,4 +1,4 @@
-package br.com.zupacademy.chavePix
+package br.com.zupacademy.chavePix.cadastra
 
 import br.com.zupacademy.ChavePixRequest
 import br.com.zupacademy.KeyManagerPixServiceCadastraGrpc
@@ -23,7 +23,8 @@ class CadastraChavePixController(
 
     @Post("/clientes/{uuidCliente}/chaves")
     fun cadastraChavePix(@PathVariable @ValidUUID uuidCliente: String,
-                         @Valid @Body cadastraChavePixRequest: CadastraChavePixRequest): HttpResponse<Any>{
+                         @Valid @Body cadastraChavePixRequest: CadastraChavePixRequest
+    ): HttpResponse<Any>{
 
         val response = clientePix.cadastraChave(
             ChavePixRequest.newBuilder()
