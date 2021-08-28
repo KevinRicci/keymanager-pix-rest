@@ -38,6 +38,7 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.h2database:h2")
     implementation("io.micronaut:micronaut-validation")
+    testImplementation("org.mockito:mockito-core:3.12.4")
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 

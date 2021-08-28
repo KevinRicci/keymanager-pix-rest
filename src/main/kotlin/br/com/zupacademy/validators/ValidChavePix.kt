@@ -23,6 +23,7 @@ class ChavePixValidator(): ConstraintValidator<ValidChavePix, CadastraChavePixRe
         annotationMetadata: AnnotationValue<ValidChavePix>,
         context: io.micronaut.validation.validator.constraints.ConstraintValidatorContext
     ): Boolean {
-        return value.tipoChave.validaValor(value.valorChave)
+
+        return value.tipoChave.validaValor(value?.valorChave)
     }
 }

@@ -12,8 +12,7 @@ import javax.validation.constraints.NotNull
 data class CadastraChavePixRequest(
     @field:NotNull
     val tipoChave: TipoChave,
-    @field:NotBlank
-    val valorChave: String,
+    val valorChave: String?,
     @field:NotNull
     val tipoConta: TipoConta
 ) {
