@@ -25,6 +25,9 @@ micronaut {
         annotations("br.com.zupacademy.*")
     }
 }
+allOpen{
+    annotation("io.micronaut.http.annotations.Controller")
+}
 
 dependencies {
     kapt("io.micronaut.data:micronaut-data-processor")

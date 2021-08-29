@@ -16,3 +16,7 @@ grpc:
     pix:
       address: ${GRPC_SERVER_PIX_URL:`localhost:50051`}
       plaintext: true
+
+jackson:
+  serialization:
+    writeDatesAsTimestamps: false

@@ -1,6 +1,7 @@
 package br.com.zupacademy.client
 
 import br.com.zupacademy.KeyManagerPixServiceCadastraGrpc
+import br.com.zupacademy.KeyManagerPixServiceConsultaGrpc
 import br.com.zupacademy.KeyManagerPixServiceDeletaGrpc
 import io.grpc.ManagedChannel
 import io.grpc.stub.AbstractBlockingStub
@@ -19,5 +20,10 @@ class ClientFactoryGrpc {
     @Singleton
     fun clienteDeletaChavePix(@GrpcChannel("pix") channel: ManagedChannel): KeyManagerPixServiceDeletaGrpc.KeyManagerPixServiceDeletaBlockingStub{
         return KeyManagerPixServiceDeletaGrpc.newBlockingStub(channel)
+    }
+
+    @Singleton
+    fun clienteConsultaChavePix(@GrpcChannel("pix") channel: ManagedChannel): KeyManagerPixServiceConsultaGrpc.KeyManagerPixServiceConsultaBlockingStub{
+        return KeyManagerPixServiceConsultaGrpc.newBlockingStub(channel)
     }
 }
