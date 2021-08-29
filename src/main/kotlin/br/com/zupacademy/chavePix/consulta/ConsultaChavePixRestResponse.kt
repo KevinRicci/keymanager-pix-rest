@@ -14,8 +14,8 @@ open class ConsultaChavePixRestResponse(
     val nomeTitular: String,
     val cpfTitular: String,
     val nomeInstituicao: String,
-    val agencia: Int,
-    val numeroConta: Int,
+    val agencia: String,
+    val numeroConta: String,
     val tipoConta: TipoConta,
     val horaCadastro: LocalDateTime
 ) {

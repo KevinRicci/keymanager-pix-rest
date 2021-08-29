@@ -30,7 +30,7 @@ class CadastraChavePixController(
             ChavePixRequest.newBuilder()
                 .setUuidCliente(uuidCliente)
                 .setTipoChave(TipoChave.valueOf(cadastraChavePixRequest.tipoChave.name))
-                .setValorChave(cadastraChavePixRequest?.valorChave ?: "")
+                .setValorChave(cadastraChavePixRequest.valorChave ?: "")
                 .setTipoConta(TipoConta.valueOf(cadastraChavePixRequest.tipoConta.name))
                 .build())
 
