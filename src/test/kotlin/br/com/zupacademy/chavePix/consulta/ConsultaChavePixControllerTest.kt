@@ -25,11 +25,12 @@ internal class ConsultaChavePixControllerTest(
     @field:Client("/")
     lateinit var httpClient: HttpClient
 
+    val idCLiente = UUID.randomUUID().toString()
+    val idChave = UUID.randomUUID().toString()
+
     @Test
     fun `deve consultar os dados de uma chave pix`(){
         //cenário
-        val idCLiente = UUID.randomUUID().toString()
-        val idChave = UUID.randomUUID().toString()
 
         Mockito.`when`(clientPix.consultaChavePix(Mockito.any())).thenReturn(
             ConsultaChavePixResponse.newBuilder()
@@ -48,13 +49,61 @@ internal class ConsultaChavePixControllerTest(
         )
 
         //ação
-        val request = HttpRequest.GET<String>("/api/v1/clientes/$idCLiente/chaves/$idChave")
+        val request = HttpRequest.GET<String>("/api/v1/clientes/${this.idCLiente}/chaves/$idChave")
         val resposta = httpClient.toBlocking().exchange(request, ConsultaChavePixRestResponse::class.java)
 
         //validação
         assertEquals(HttpStatus.OK, resposta.status)
         assertEquals(idCLiente, resposta.body().idCliente)
         assertEquals(idChave, resposta.body().pixId)
+    }
+
+    @Test
+    fun `deve retornar todas as chaves pix`(){
+        //cenário
+        Mockito.`when`(clientPix.buscaChaves(Mockito.any())).thenReturn(
+            BuscaChavesPixResponse.newBuilder()
+                .addAllChaves(carregaListaDeChaves())
+                .build()
+        )
+
+        //ação
+        val request = HttpRequest.GET<Any>("/api/v1/clientes/${this.idCLiente}/chaves")
+        val resposta = httpClient.toBlocking().exchange(request, List::class.java)
+
+        //validação
+        assertEquals(HttpStatus.OK, resposta.status)
+        assertEquals(3, resposta.body().size)
+    }
+
+    fun carregaListaDeChaves(): List<BuscaChavesPixResponse.Chaves>{
+
+        return listOf<BuscaChavesPixResponse.Chaves>(
+            BuscaChavesPixResponse.Chaves.newBuilder()
+                .setPixId(this.idChave)
+                .setUuidCliente(this.idCLiente)
+                .setTipoChave(TipoChave.CELULAR)
+                .setValorChave("+5511998736543")
+                .setTipoConta(TipoConta.CONTA_POUPANCA)
+                .setHoraCadastro(Timestamp.getDefaultInstance())
+                .build(),
+            BuscaChavesPixResponse.Chaves.newBuilder()
+                .setPixId(this.idChave)
+                .setUuidCliente(this.idCLiente)
+                .setTipoChave(TipoChave.EMAIL)
+                .setValorChave("kevin@gmail.com")
+                .setTipoConta(TipoConta.CONTA_CORRENTE)
+                .setHoraCadastro(Timestamp.getDefaultInstance())
+                .build(),
+            BuscaChavesPixResponse.Chaves.newBuilder()
+                .setPixId(this.idChave)
+                .setUuidCliente(this.idCLiente)
+                .setTipoChave(TipoChave.CPF)
+                .setValorChave("52037558974")
+                .setTipoConta(TipoConta.CONTA_POUPANCA)
+                .setHoraCadastro(Timestamp.getDefaultInstance())
+                .build()
+        )
     }
 }
 
