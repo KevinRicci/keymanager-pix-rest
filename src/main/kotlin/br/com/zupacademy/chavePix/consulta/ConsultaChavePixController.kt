@@ -1,5 +1,6 @@
 package br.com.zupacademy.chavePix.consulta
 
+import br.com.zupacademy.BuscaChavesPixRequest
 import br.com.zupacademy.ConsultaChavePixRequest
 import br.com.zupacademy.KeyManagerPixServiceConsultaGrpc
 import br.com.zupacademy.validators.ValidUUID
@@ -28,6 +29,16 @@ class ConsultaChavePixController (
                 setPixId(idChave).
                 build()).
             build()).toModel()
+
+        return HttpResponse.ok(response)
+    }
+
+    @Get("/clientes/{idCliente}/chaves")
+    fun buscaTodasAsChaves(@PathVariable @ValidUUID idCliente: String): HttpResponse<List<BuscaChavesPixRestResponse>>{
+        val response = clientPix.buscaChaves(BuscaChavesPixRequest.newBuilder()
+            .setUuidCliente(idCliente)
+            .build())
+            .toModel()
 
         return HttpResponse.ok(response)
     }
